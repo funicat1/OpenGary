@@ -13,6 +13,14 @@ git clone https://github.com/funicat1/OpenGary
 cd OpenGary
 ```
 
+#### 0.1. Add important directories
+
+```bash
+mkdir garypics
+mkdir gooberpics
+mkdir gullypics
+```
+
 ### 1. Pull the pictures
 
 By default, the repo doesnt contain gary, goober, or gully pictures.
