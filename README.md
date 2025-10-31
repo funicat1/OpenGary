@@ -6,6 +6,13 @@ Self-hosted Gary API!
 
 Yes, you do have to install it.
 
+#### 0. Clone the repo
+
+```bash
+git clone https://github.com/funicat1/OpenGary
+cd OpenGary
+```
+
 ### 1. Pull the pictures
 
 By default, the repo doesnt contain gary, goober, or gully pictures.
