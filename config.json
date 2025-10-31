@@ -1,0 +1,8 @@
+{
+    "garypicspath": "garypics",
+    "gullypicspath": "gullypics",
+    "gooberpicspath": "gooberpics",
+    "quotespath": "quotes.txt",
+    "jokespath": "jokes.txt",
+    "port": 5000
+}

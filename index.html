@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gary the Cat</title>
+
+  <meta name="description" content="Meet Gary the Cat — a refined feline with a legendary presence. Explore his world, powered by the Gary API.">
+  <meta name="keywords" content="Gary the Cat, Cat API, Gary API, Cat Personality, Legendary Cat, Gary Bot, Gary University, Gary Army">
+  <meta name="author" content="Gary the Cat">
+  <meta name="theme-color" content="#1A1A1A">
+
+  <link rel="canonical" href="{localurl}" />
+  <link rel="icon" href="{localurl}/gary.ico" type="image/x-icon">
+
+  <meta property="og:title" content="OpenGary">
+  <meta property="og:description" content="Open-source Gary API alternative.">
+  <meta property="og:image" content="{localurl}/gary">
+  <meta property="og:url" content="{localurl}">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OpenGary">
+  <meta name="twitter:description" content="Open-source Gary API alternative.">
+  <meta name="twitter:image" content="{localurl}/gary">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gary-grey: #5A5A5A;
+      --gary-white: #E8E8E8;
+      --gary-green: #a0abcf;
+      --background-dark: #1A1A1A;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--background-dark), #2A2A2A);
+      color: var(--gary-white);
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    a {
+        text-decoration: underline !important;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(168, 207, 160, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(232, 232, 232, 0.02) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .title-text {
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      background: linear-gradient(135deg, #d1d5db 0%, #ffffff 50%, #f3f4f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    }
+
+    .subtitle-text {
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      color: var(--gary-green);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      opacity: 0.9;
+    }
+
+    .nav-link {
+      padding: 0.75rem 1.25rem;
+      border-radius: 50px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(168, 207, 160, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .nav-link:hover::before {
+      left: 100%;
+    }
+
+    .nav-link:hover {
+      background: var(--gary-green);
+      color: #1A1A1A;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(160, 205, 207, 0.3);
+      border-color: var(--gary-green);
+    }
+
+    .nav-link:active {
+      transform: translateY(-1px);
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, rgba(160, 207, 201, 0.8), rgba(160, 207, 201, 0.2) 70%, transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: particleFloat 12s infinite ease-in-out;
+      z-index: 2;
+      box-shadow: 0 0 10px rgba(160, 204, 207, 0.3);
+    }
+
+    @keyframes particleFloat {
+      0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 0; }
+      5% { opacity: 1; transform: translateY(95vh) scale(0.8) rotate(45deg); }
+      50% { transform: translateY(50vh) scale(1) rotate(180deg); }
+      95% { opacity: 1; transform: translateY(5vh) scale(0.8) rotate(315deg); }
+      100% { transform: translateY(-5vh) scale(0.3) rotate(360deg); opacity: 0; }
+    }
+
+    .loading-shimmer {
+      background: linear-gradient(-45deg, #2a2a2a, #3a3a3a, #4a4a4a, #3a3a3a);
+      background-size: 400% 400%;
+      animation: shimmer 2.5s ease-in-out infinite;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loading-shimmer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shimmerOverlay 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes shimmerOverlay {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .hero-container {
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-container {
+      animation: fadeInDown 1s ease-out 0.3s both;
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .footer-container {
+      animation: fadeIn 1s ease-out 0.6s both;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .gary-image {
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(168, 207, 160, 0.1);
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .gary-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4), 0 0 60px rgba(168, 207, 160, 0.15);
+    }
+
+    @media (max-width: 640px) {
+      .nav-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+      .particle {
+        width: 3px;
+        height: 3px;
+      }
+    }
+
+    .nav-link:focus {
+      outline: 2px solid var(--gary-green);
+      outline-offset: 2px;
+    }
+
+    .loading-text {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.animationDuration = (Math.random() * 4 + 8) + 's';
+      particle.style.animationDelay = Math.random() * 3 + 's';
+      const size = Math.random() * 2 + 3;
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 15000);
+    }
+
+    for(let i = 0; i < 3; i++) setTimeout(() => createParticle(), i * 200);
+    setInterval(createParticle, 1200);
+  </script>
+
+  <div class="flex flex-col h-screen items-center justify-between px-4 py-4 relative z-10">
+    <nav class="nav-container flex gap-3 sm:gap-4 z-20">
+      <a href="docs.html" class="nav-link" tabindex="0">API</a>
+    </nav>
+
+    <div class="hero-container flex flex-col items-center text-center flex-grow justify-center min-h-0 overflow-hidden max-w-2xl w-full">
+      <h1 class="title-text mb-3">OpenGary</h1>
+      <p class="subtitle-text mb-8">Open-source Gary API alternative. <a href="https://garythe.cat/">See the original</a></p>
+      <div class="w-full max-w-md">
+        <div id="loading-placeholder" class="loading-shimmer w-full h-60 sm:h-72 rounded-2xl flex items-center justify-center text-white/70 text-base font-medium">
+          <span class="loading-text">Loading Gary's magnificence...</span>
+        </div>
+        <img id="gary-image" alt="Gary the Cat" class="gary-image hidden w-full h-60 sm:h-72 object-cover opacity-0 transition-all duration-1000"/>
+      </div>
+    </div>
+
+    <footer class="footer-container text-xs text-white/50 z-20 font-medium">
+      &copy; 2025 OpenGary. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    const garyImage = document.getElementById('gary-image');
+    const loadingPlaceholder = document.getElementById('loading-placeholder');
+    const loadingTimeout = setTimeout(() => {
+      loadingPlaceholder.innerHTML = '<span class="loading-text">Gary is being mysterious... 🐱</span>';
+    }, 8000);
+
+    fetch('/gary')
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
+      .then(data => {
+        clearTimeout(loadingTimeout);
+        const img = new Image();
+        img.onload = () => {
+          setTimeout(() => {
+            garyImage.src = data.url;
+            garyImage.classList.remove('hidden');
+            setTimeout(() => {
+              garyImage.style.opacity = '1';
+              loadingPlaceholder.style.opacity = '0';
+              setTimeout(() => {
+                loadingPlaceholder.style.display = 'none';
+              }, 500);
+            }, 100);
+          }, 800);
+        };
+        img.onerror = () => {
+          clearTimeout(loadingTimeout);
+          loadingPlaceholder.innerHTML = '<span class="loading-text">Gary is camera-shy today... 📸</span>';
+        };
+        img.src = data.url;
+      })
+      .catch(err => {
+        clearTimeout(loadingTimeout);
+        console.error('Gary image fetch failed:', err);
+        loadingPlaceholder.innerHTML = '<span class="loading-text">Gary is being mysterious... 🐱</span>';
+      });
+  </script>
+</body>
+</html>
