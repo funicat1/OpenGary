@@ -13,7 +13,16 @@ git clone https://github.com/funicat1/OpenGary
 cd OpenGary
 ```
 
-#### 0.1. Add important directories
+### 1. Pull the pictures
+
+you dont need to do it now - the repo has everything already.
+
+but, if you do want to likely re-pull the pictures, do this:
+
+<details>
+  <summary>How to pull the pictures</summary>
+  
+#### 0. Add important directories
 
 ```bash
 mkdir garypics
@@ -21,23 +30,20 @@ mkdir gooberpics
 mkdir gullypics
 ```
 
-### 1. Pull the pictures
-
-By default, the repo doesnt contain gary, goober, or gully pictures.
-
-You have to pull all the pictures from the gary cdn, heres how:
+#### 1. Pull the images
 
 1. Move the scrapers to the root directory
 
 2. Run them
 
    ```bash
-    python garyscrape.py
-    python gooberscrape.py
-    python gullyscrape.py
+   python garyscrape.py
+   python gooberscrape.py
+   python gullyscrape.py
    ```
 
 3. Move the scrapers back or just delete them.
+</details>
 
 ### 2. Install the requirements
 
