@@ -63,6 +63,6 @@ python app.py
 
 # Feedback?
 
-Contact me on discord: @funicatto
+Contact me on discord: @funicatto (CANT TEMPORARILY, ACC TERMINATED)
 
 Or make an issue on the repo.
