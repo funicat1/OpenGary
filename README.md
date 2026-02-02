@@ -1,10 +1,10 @@
 # OpenGary
 
-Self-hosted Gary API!
+A self-hosted Gary API!
+
+<sup>Credits to theMackabu for making the social preview!</sup>
 
 # Installation
-
-Yes, you do have to install it.
 
 #### 0. Clone the repo
 
@@ -60,9 +60,3 @@ in config.json, but yeah, this is optional
 ```bash
 python app.py
 ```
-
-# Feedback?
-
-Contact me on discord: @funicatto (yeah this one's dead)
-
-Or make an issue on the repo.
